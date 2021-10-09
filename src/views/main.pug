@@ -1,0 +1,29 @@
+extends index
+
+block content
+  div(class="container-fluid container-md")
+    div(class="card text-dark bg-light mb-3")
+      div(class="card-body")
+        figure(class="text-center")
+          h3="Listado de productos."
+
+        if products.length
+          table(class="table")
+            thead
+              tr
+                th(scope="col")="Id"
+                th(scope="col")="Título"
+                th(scope="col")="Precio"
+                th(scope="col")="Foto"
+            tbody
+              each product in products
+                tr
+                  th(scope="row")=product.id
+                  td=product.title
+                  td=product.price
+                  td
+                    img(style="max-width: 50px; max-height: 50px;"
+                      src=product.thumbnail)
+        else
+          figure(class="text-center text-secondary")
+            h4="No hay productos disponibles."
